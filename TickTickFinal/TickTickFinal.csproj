@@ -39,55 +39,23 @@
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\gamemanagement\AnimatedGameObject.cs">
-      <Link>GameManagement\AnimatedGameObject.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\Animation.cs">
-      <Link>GameManagement\Animation.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\AssetManager.cs">
-      <Link>GameManagement\AssetManager.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\Collision.cs">
-      <Link>GameManagement\Collision.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\DrawingHelper.cs">
-      <Link>GameManagement\DrawingHelper.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\GameEnvironment.cs">
-      <Link>GameManagement\GameEnvironment.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\GameObject.cs">
-      <Link>GameManagement\GameObject.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\GameObjectGrid.cs">
-      <Link>GameManagement\GameObjectGrid.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\GameObjectList.cs">
-      <Link>GameManagement\GameObjectList.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\GameSettingsManager.cs">
-      <Link>GameManagement\GameSettingsManager.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\GameStateManager.cs">
-      <Link>GameManagement\GameStateManager.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\IGameLoopObject.cs">
-      <Link>GameManagement\IGameLoopObject.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\InputHelper.cs">
-      <Link>GameManagement\InputHelper.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\SpriteGameObject.cs">
-      <Link>GameManagement\SpriteGameObject.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\SpriteSheet.cs">
-      <Link>GameManagement\SpriteSheet.cs</Link>
-    </Compile>
-    <Compile Include="..\..\gamemanagement\TextGameObject.cs">
-      <Link>GameManagement\TextGameObject.cs</Link>
-    </Compile>
+    <Compile Include="GameManagement\AnimatedGameObject.cs" />
+    <Compile Include="GameManagement\Animation.cs" />
+    <Compile Include="GameManagement\AssetManager.cs" />
     <Compile Include="GameManagement\Camera.cs" />
+    <Compile Include="GameManagement\Collision.cs" />
+    <Compile Include="GameManagement\DrawingHelper.cs" />
+    <Compile Include="GameManagement\GameEnvironment.cs" />
+    <Compile Include="GameManagement\GameObject.cs" />
+    <Compile Include="GameManagement\GameObjectGrid.cs" />
+    <Compile Include="GameManagement\GameObjectList.cs" />
+    <Compile Include="GameManagement\GameSettingsManager.cs" />
+    <Compile Include="GameManagement\GameStateManager.cs" />
+    <Compile Include="GameManagement\IGameLoopObject.cs" />
+    <Compile Include="GameManagement\InputHelper.cs" />
+    <Compile Include="GameManagement\SpriteGameObject.cs" />
+    <Compile Include="GameManagement\SpriteSheet.cs" />
+    <Compile Include="GameManagement\TextGameObject.cs" />
     <Compile Include="gameobjects\Clouds.cs" />
     <Compile Include="gameobjects\enemies\PatrollingEnemy.cs" />
     <Compile Include="gameobjects\enemies\PlayerFollowingEnemy.cs" />
