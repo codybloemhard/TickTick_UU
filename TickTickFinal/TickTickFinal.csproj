@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{07FE42F9-FE6D-4B05-BFDC-75C3449CFABB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TickTick5</RootNamespace>
+    <AssemblyName>TickTick5</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MonoGamePlatform>Windows</MonoGamePlatform>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\gamemanagement\AnimatedGameObject.cs">
+      <Link>GameManagement\AnimatedGameObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\Animation.cs">
+      <Link>GameManagement\Animation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\AssetManager.cs">
+      <Link>GameManagement\AssetManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\Collision.cs">
+      <Link>GameManagement\Collision.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\DrawingHelper.cs">
+      <Link>GameManagement\DrawingHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\GameEnvironment.cs">
+      <Link>GameManagement\GameEnvironment.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\GameObject.cs">
+      <Link>GameManagement\GameObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\GameObjectGrid.cs">
+      <Link>GameManagement\GameObjectGrid.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\GameObjectList.cs">
+      <Link>GameManagement\GameObjectList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\GameSettingsManager.cs">
+      <Link>GameManagement\GameSettingsManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\GameStateManager.cs">
+      <Link>GameManagement\GameStateManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\IGameLoopObject.cs">
+      <Link>GameManagement\IGameLoopObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\InputHelper.cs">
+      <Link>GameManagement\InputHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\SpriteGameObject.cs">
+      <Link>GameManagement\SpriteGameObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\SpriteSheet.cs">
+      <Link>GameManagement\SpriteSheet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gamemanagement\TextGameObject.cs">
+      <Link>GameManagement\TextGameObject.cs</Link>
+    </Compile>
+    <Compile Include="GameManagement\Camera.cs" />
+    <Compile Include="gameobjects\Clouds.cs" />
+    <Compile Include="gameobjects\enemies\PatrollingEnemy.cs" />
+    <Compile Include="gameobjects\enemies\PlayerFollowingEnemy.cs" />
+    <Compile Include="gameobjects\enemies\Rocket.cs" />
+    <Compile Include="gameobjects\enemies\Sparky.cs" />
+    <Compile Include="gameobjects\enemies\Turtle.cs" />
+    <Compile Include="gameobjects\enemies\UnpredictableEnemy.cs" />
+    <Compile Include="gameobjects\Player.cs" />
+    <Compile Include="gameobjects\PlayerPhysics.cs" />
+    <Compile Include="gameobjects\Tile.cs" />
+    <Compile Include="gameobjects\TileField.cs" />
+    <Compile Include="gameobjects\TimerGameObject.cs" />
+    <Compile Include="gameobjects\VisibilityTimer.cs" />
+    <Compile Include="gameobjects\WaterDrop.cs" />
+    <Compile Include="level\Level.cs" />
+    <Compile Include="level\LevelGameLoop.cs" />
+    <Compile Include="level\LevelLoading.cs" />
+    <Compile Include="menu\Button.cs" />
+    <Compile Include="menu\LevelButton.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="states\GameOverState.cs" />
+    <Compile Include="states\HelpState.cs" />
+    <Compile Include="states\LevelFinishedState.cs" />
+    <Compile Include="states\LevelMenuState.cs" />
+    <Compile Include="states\PlayingState.cs" />
+    <Compile Include="states\TitleMenuState.cs" />
+    <Compile Include="TickTick.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\assets\ticktick\backgrounds\spr_cloud_1.png">
+      <Link>Content\Backgrounds\spr_cloud_1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\backgrounds\spr_cloud_2.png">
+      <Link>Content\Backgrounds\spr_cloud_2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\backgrounds\spr_cloud_3.png">
+      <Link>Content\Backgrounds\spr_cloud_3.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\backgrounds\spr_cloud_4.png">
+      <Link>Content\Backgrounds\spr_cloud_4.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\backgrounds\spr_cloud_5.png">
+      <Link>Content\Backgrounds\spr_cloud_5.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\backgrounds\spr_help.jpg">
+      <Link>Content\Backgrounds\spr_help.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\backgrounds\spr_levelselect.jpg">
+      <Link>Content\Backgrounds\spr_levelselect.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\backgrounds\spr_mountain_1.png">
+      <Link>Content\Backgrounds\spr_mountain_1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\backgrounds\spr_mountain_2.png">
+      <Link>Content\Backgrounds\spr_mountain_2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\backgrounds\spr_sky.jpg">
+      <Link>Content\Backgrounds\spr_sky.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\backgrounds\spr_title.jpg">
+      <Link>Content\Backgrounds\spr_title.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\levels\1.txt">
+      <Link>Content\Levels\1.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\levels\10.txt">
+      <Link>Content\Levels\10.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\levels\2.txt">
+      <Link>Content\Levels\2.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\levels\3.txt">
+      <Link>Content\Levels\3.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\levels\4.txt">
+      <Link>Content\Levels\4.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\levels\5.txt">
+      <Link>Content\Levels\5.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\levels\6.txt">
+      <Link>Content\Levels\6.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\levels\7.txt">
+      <Link>Content\Levels\7.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\levels\8.txt">
+      <Link>Content\Levels\8.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\levels\9.txt">
+      <Link>Content\Levels\9.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\levels\levels_status.txt">
+      <Link>Content\Levels\levels_status.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\overlays\spr_frame_hint.png">
+      <Link>Content\Overlays\spr_frame_hint.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\overlays\spr_gameover.png">
+      <Link>Content\Overlays\spr_gameover.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\overlays\spr_welldone.png">
+      <Link>Content\Overlays\spr_welldone.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sounds\snd_music.wma">
+      <Link>Content\Sounds\snd_music.wma</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\flame\spr_flame%409.png">
+      <Link>Content\Sprites\Flame\spr_flame%409.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\player\spr_celebrate%4014.png">
+      <Link>Content\Sprites\Player\spr_celebrate%4014.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\player\spr_die%405.png">
+      <Link>Content\Sprites\Player\spr_die%405.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\player\spr_explode%405x5.png">
+      <Link>Content\Sprites\Player\spr_explode%405x5.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\player\spr_idle.png">
+      <Link>Content\Sprites\Player\spr_idle.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\player\spr_jump%4014.png">
+      <Link>Content\Sprites\Player\spr_jump%4014.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\player\spr_run%4013.png">
+      <Link>Content\Sprites\Player\spr_run%4013.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\rocket\spr_rocket%403.png">
+      <Link>Content\Sprites\Rocket\spr_rocket%403.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\sparky\spr_electrocute%406x5.png">
+      <Link>Content\Sprites\Sparky\spr_electrocute%406x5.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\sparky\spr_electrocute.png">
+      <Link>Content\Sprites\Sparky\spr_electrocute.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\sparky\spr_idle.png">
+      <Link>Content\Sprites\Sparky\spr_idle.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\spr_button_back.png">
+      <Link>Content\Sprites\spr_button_back.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\spr_button_help.png">
+      <Link>Content\Sprites\spr_button_help.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\spr_button_play.png">
+      <Link>Content\Sprites\spr_button_play.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\spr_button_quit.png">
+      <Link>Content\Sprites\spr_button_quit.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\spr_goal.png">
+      <Link>Content\Sprites\spr_goal.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\spr_level_locked.png">
+      <Link>Content\Sprites\spr_level_locked.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\spr_level_solved.png">
+      <Link>Content\Sprites\spr_level_solved.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\spr_level_unsolved.png">
+      <Link>Content\Sprites\spr_level_unsolved.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\spr_timer.png">
+      <Link>Content\Sprites\spr_timer.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\spr_water.png">
+      <Link>Content\Sprites\spr_water.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\turtle\spr_idle.png">
+      <Link>Content\Sprites\Turtle\spr_idle.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\sprites\turtle\spr_sneeze%409.png">
+      <Link>Content\Sprites\Turtle\spr_sneeze%409.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\tiles\spr_platform.png">
+      <Link>Content\Tiles\spr_platform.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\tiles\spr_platform_hot.png">
+      <Link>Content\Tiles\spr_platform_hot.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\tiles\spr_platform_ice.png">
+      <Link>Content\Tiles\spr_platform_ice.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\tiles\spr_wall.png">
+      <Link>Content\Tiles\spr_wall.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\tiles\spr_wall_hot.png">
+      <Link>Content\Tiles\spr_wall_hot.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\assets\ticktick\tiles\spr_wall_ice.png">
+      <Link>Content\Tiles\spr_wall_ice.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\assets\ticktick\fonts\HintFont.xnb">
+      <Link>Content\Fonts\HintFont.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\assets\ticktick\fonts\Hud.xnb">
+      <Link>Content\Fonts\Hud.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\assets\ticktick\sounds\snd_music.xnb">
+      <Link>Content\Sounds\snd_music.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\assets\ticktick\sounds\snd_player_die.xnb">
+      <Link>Content\Sounds\snd_player_die.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\assets\ticktick\sounds\snd_player_fall.xnb">
+      <Link>Content\Sounds\snd_player_fall.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\assets\ticktick\sounds\snd_player_jump.xnb">
+      <Link>Content\Sounds\snd_player_jump.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\assets\ticktick\sounds\snd_player_won.xnb">
+      <Link>Content\Sounds\snd_player_won.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\assets\ticktick\sounds\snd_watercollected.xnb">
+      <Link>Content\Sounds\snd_watercollected.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
