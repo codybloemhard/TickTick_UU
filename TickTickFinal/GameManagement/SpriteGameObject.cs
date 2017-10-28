@@ -26,7 +26,9 @@ public class SpriteGameObject : GameObject
         {
             return;
         }
-        sprite.Draw(spriteBatch, this.GlobalPosition, origin);
+        Vector2 finalpos = this.GlobalPosition;
+        if (UI) finalpos += Camera.TopLeft;
+        sprite.Draw(spriteBatch, finalpos, origin);
     }
 
     public SpriteSheet Sprite

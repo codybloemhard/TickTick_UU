@@ -18,7 +18,7 @@ public class TextGameObject : GameObject
     {
         if (visible)
         {
-            spriteBatch.DrawString(spriteFont, text, GlobalPosition, color);
+            spriteBatch.DrawString(spriteFont, text, GlobalPosition + Camera.TopLeft, color);
         }
     }
 

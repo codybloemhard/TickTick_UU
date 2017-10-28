@@ -8,18 +8,27 @@ partial class Level : GameObjectList
 
     public Level(int levelIndex)
     {
+        Add(new GameObjectList(1, "waterdrops"));
+        Add(new GameObjectList(2, "enemies"));
+        LoadTiles("Content/Levels/" + levelIndex + ".txt");
         // load the backgrounds
         GameObjectList backgrounds = new GameObjectList(0, "backgrounds");
-        SpriteGameObject backgroundSky = new SpriteGameObject("Backgrounds/spr_sky");
-        backgroundSky.Position = new Vector2(0, 0);
-        backgrounds.Add(backgroundSky);
-        Console.WriteLine(GameEnvironment.Screen.Y + " , " + backgroundSky.Height);
+        //zorg dat de lucht altijd in beeld is
+        int xline = 0;
+        while(xline < WorldSize.X)
+        {
+            SpriteGameObject backgroundSky = new SpriteGameObject("Backgrounds/spr_sky");
+            backgroundSky.Position = new Vector2(xline, WorldSize.Y - backgroundSky.Height);
+            backgrounds.Add(backgroundSky);
+            xline += backgroundSky.Width;
+        }
+        
         // add a few random mountains
         for (int i = 0; i < 5; i++)
         {
             SpriteGameObject mountain = new SpriteGameObject("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), 1);
-            mountain.Position = new Vector2((float)GameEnvironment.Random.NextDouble() * GameEnvironment.Screen.X - mountain.Width / 2, 
-                GameEnvironment.Screen.Y - mountain.Height);
+            mountain.Position = new Vector2((float)GameEnvironment.Random.NextDouble() * WorldSize.X - (mountain.Width / 2), 
+                WorldSize.Y - mountain.Height);
             backgrounds.Add(mountain);
         }
 
@@ -29,17 +38,14 @@ partial class Level : GameObjectList
         
         SpriteGameObject timerBackground = new SpriteGameObject("Sprites/spr_timer", 100);
         timerBackground.Position = new Vector2(10, 10);
+        timerBackground.UI = true;
         Add(timerBackground);
 
         quitButton = new Button("Sprites/spr_button_quit", 100);
         quitButton.Position = new Vector2(GameEnvironment.Screen.X - quitButton.Width - 10, 10);
+        quitButton.UI = true;
         Add(quitButton);
-
-        Add(new GameObjectList(1, "waterdrops"));
-        Add(new GameObjectList(2, "enemies"));
-
-        LoadTiles("Content/Levels/" + levelIndex + ".txt");
-
+        
         TimerGameObject timer = new TimerGameObject(LevelTimeSeconds, 101, "timer");
         timer.Position = new Vector2(25, 30);
         Add(timer);
@@ -89,4 +95,3 @@ partial class Level : GameObjectList
         set { solved = value; }
     }
 }
-

@@ -11,6 +11,7 @@ class GameOverState : GameObjectList
         playingState = GameEnvironment.GameStateManager.GetGameState("playingState");
         SpriteGameObject overlay = new SpriteGameObject("Overlays/spr_gameover");
         overlay.Position = new Vector2(GameEnvironment.Screen.X, GameEnvironment.Screen.Y) / 2 - overlay.Center;
+        overlay.UI = true;
         Add(overlay);
     }
 

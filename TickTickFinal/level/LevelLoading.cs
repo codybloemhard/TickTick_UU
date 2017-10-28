@@ -25,6 +25,7 @@ partial class Level : GameObjectList
         Add(hintField);
         string hint = textLines[textLines.Count - 1];
         SpriteGameObject hintFrame = new SpriteGameObject("Overlays/spr_frame_hint", 1);
+        hintFrame.UI = true;
         hintField.Position = new Vector2((GameEnvironment.Screen.X - hintFrame.Width) / 2, 10);
         hintField.Add(hintFrame);
         TextGameObject hintText = new TextGameObject("Fonts/HintFont", 2);

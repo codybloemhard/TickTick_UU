@@ -10,6 +10,7 @@ public class SpriteSheet
     protected int sheetColumns;
     protected int sheetRows;
     protected bool mirror;
+    public bool UI = false;
 
     public SpriteSheet(string assetname, int sheetIndex = 0)
     {
@@ -55,7 +56,9 @@ public class SpriteSheet
         {
             spriteEffects = SpriteEffects.FlipHorizontally;
         }
-        spriteBatch.Draw(sprite, position, spritePart, Color.White,
+        Vector2 finalpos = position;
+        if (UI) finalpos += Camera.TopLeft;
+        spriteBatch.Draw(sprite, finalpos, spritePart, Color.White,
             0.0f, origin, 1.0f, spriteEffects, 0.0f);
     }
 

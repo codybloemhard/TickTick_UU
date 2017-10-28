@@ -8,6 +8,7 @@ public abstract class GameObject : IGameLoopObject
     protected int layer;
     protected string id;
     protected bool visible;
+    public bool UI = false;
 
     public GameObject(int layer = 0, string id = "")
     {

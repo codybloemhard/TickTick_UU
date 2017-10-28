@@ -100,6 +100,9 @@ public static class Camera
         Vector2 gotoPos = view.CameraSpeed(playerPos, new Vector2(xx, yy));
         SetCameraTopLeft(gotoPos);
     }
+    
+    public static Vector2 TopLeft { get { return new Vector2(view.x, view.y); } }
 
+    public static Vector2 WorldSize { get { return size; } }
     public static Matrix TranslationMatrix { get { return translation; } }
 }
