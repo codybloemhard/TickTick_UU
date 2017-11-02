@@ -5,7 +5,7 @@ public class SpriteGameObject : GameObject
 {
     protected SpriteSheet sprite;
     protected Vector2 origin;
-    public bool PerPixelCollisionDetection = true;
+    public bool PerPixelCollisionDetection = true, paralax = false;
 
     public SpriteGameObject(string assetName, int layer = 0, string id = "", int sheetIndex = 0)
         : base(layer, id)
@@ -22,13 +22,16 @@ public class SpriteGameObject : GameObject
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
-        if (!visible || sprite == null)
-        {
-            return;
-        }
+        if (!visible || sprite == null) return;
         Vector2 finalpos = this.GlobalPosition;
         if (UI) finalpos += Camera.TopLeft;
-        sprite.Draw(spriteBatch, finalpos, origin);
+        Vector2 displace = Vector2.Zero;
+        if (paralax)
+        {
+            displace = Vector2.UnitX * layer * 0.1f * Camera.TopLeft.X;
+            displace -= Vector2.UnitX * Camera.WorldSize / 2;
+        }
+        sprite.Draw(spriteBatch, finalpos + displace, origin);
     }
 
     public SpriteSheet Sprite

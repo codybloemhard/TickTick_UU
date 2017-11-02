@@ -24,11 +24,12 @@ partial class Level : GameObjectList
         }
         
         // add a few random mountains
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
-            SpriteGameObject mountain = new SpriteGameObject("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), 1);
-            mountain.Position = new Vector2((float)GameEnvironment.Random.NextDouble() * WorldSize.X - (mountain.Width / 2), 
+            SpriteGameObject mountain = new SpriteGameObject("Backgrounds/spr_mountain_1", (int)GameEnvironment.Random.Next(3));
+            mountain.Position = new Vector2((float)GameEnvironment.Random.NextDouble() * WorldSize.X, 
                 WorldSize.Y - mountain.Height);
+            mountain.paralax = true;
             backgrounds.Add(mountain);
         }
 
