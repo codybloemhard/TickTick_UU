@@ -7,6 +7,7 @@ partial class Level : GameObjectList
 {
     private Vector2 WorldSize = Vector2.Zero;
     private int LevelTimeSeconds = 0;
+    private GameObjectList bullets;
 
     public void LoadTiles(string path)
     {
@@ -111,6 +112,7 @@ partial class Level : GameObjectList
         TileField tiles = Find("tiles") as TileField;
         Vector2 startPosition = new Vector2(((float)x + 0.5f) * tiles.CellWidth, (y + 1) * tiles.CellHeight);
         Player player = new Player(startPosition);
+        player.SetBullets(bullets);
         Add(player);
         return new Tile("", TileType.Background);
     }
@@ -141,7 +143,6 @@ partial class Level : GameObjectList
         enemies.Add(enemy);
         return new Tile();
     }
-
 
     private Tile LoadSparkyTile(int x, int y)
     {

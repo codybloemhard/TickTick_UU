@@ -1,7 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 partial class Level : GameObjectList
 {
+    private TimerGameObject timer = null;
+    private Player player = null;
+
     public override void HandleInput(InputHelper inputHelper)
     {
         base.HandleInput(inputHelper);
@@ -16,8 +20,10 @@ partial class Level : GameObjectList
     {
         base.Update(gameTime);
 
-        TimerGameObject timer = Find("timer") as TimerGameObject;
-        Player player = Find("player") as Player;
+        if(timer == null)
+            timer = Find("timer") as TimerGameObject;
+        if(player == null)
+            player = Find("player") as Player;
 
         // check if we died
         if (!player.IsAlive)
@@ -30,7 +36,7 @@ partial class Level : GameObjectList
         {
             player.Explode();
         }
-                       
+                 
         // check if we won
         if (Completed && timer.Running)
         {

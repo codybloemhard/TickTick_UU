@@ -10,21 +10,19 @@ partial class Level : GameObjectList
     {
         Add(new GameObjectList(1, "waterdrops"));
         Add(new GameObjectList(2, "enemies"));
+        bullets = new GameObjectList(3, "bullets");
+        Add(bullets);
+
         LoadTiles("Content/Levels/" + levelIndex + ".txt");
         // load the backgrounds
         GameObjectList backgrounds = new GameObjectList(0, "backgrounds");
-        //zorg dat de lucht altijd in beeld is
-        int xline = 0;
-        while(xline < WorldSize.X)
-        {
-            SpriteGameObject backgroundSky = new SpriteGameObject("Backgrounds/spr_sky");
-            backgroundSky.Position = new Vector2(xline, WorldSize.Y - backgroundSky.Height);
-            backgrounds.Add(backgroundSky);
-            xline += backgroundSky.Width;
-        }
+        
+        SpriteGameObject backgroundSky = new SpriteGameObject("Backgrounds/spr_sky", 0, "sky");
+        backgroundSky.Position = new Vector2(0, WorldSize.Y - backgroundSky.Height);
+        backgrounds.Add(backgroundSky);
         
         // add a few random mountains
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 30; i++)
         {
             SpriteGameObject mountain = new SpriteGameObject("Backgrounds/spr_mountain_1", (int)GameEnvironment.Random.Next(3));
             mountain.Position = new Vector2((float)GameEnvironment.Random.NextDouble() * WorldSize.X, 

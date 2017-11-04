@@ -56,6 +56,7 @@
     <Compile Include="GameManagement\SpriteGameObject.cs" />
     <Compile Include="GameManagement\SpriteSheet.cs" />
     <Compile Include="GameManagement\TextGameObject.cs" />
+    <Compile Include="gameobjects\Bullet.cs" />
     <Compile Include="gameobjects\Clouds.cs" />
     <Compile Include="gameobjects\enemies\PatrollingEnemy.cs" />
     <Compile Include="gameobjects\enemies\PlayerFollowingEnemy.cs" />

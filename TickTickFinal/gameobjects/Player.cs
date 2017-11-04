@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 partial class Player : AnimatedGameObject
 {
@@ -13,6 +14,12 @@ partial class Player : AnimatedGameObject
     protected bool finished;
     protected bool walkingOnIce, walkingOnHot;
 
+    protected bool left;
+    protected GameObjectList blist;
+    protected Random r;
+    protected TimerGameObject timer;
+    protected SpriteGameObject sky;
+
     public Player(Vector2 start) : base(2, "player")
     {
         LoadAnimation("Sprites/Player/spr_idle", "idle", true); 
@@ -20,7 +27,9 @@ partial class Player : AnimatedGameObject
         LoadAnimation("Sprites/Player/spr_jump@14", "jump", false, 0.05f); 
         LoadAnimation("Sprites/Player/spr_celebrate@14", "celebrate", false, 0.05f);
         LoadAnimation("Sprites/Player/spr_die@5", "die", false);
-        LoadAnimation("Sprites/Player/spr_explode@5x5", "explode", false, 0.04f); 
+        LoadAnimation("Sprites/Player/spr_explode@5x5", "explode", false, 0.04f);
+
+        r = new Random();
 
         startPosition = start;
         Reset();
@@ -44,38 +53,69 @@ partial class Player : AnimatedGameObject
     {
         float walkingSpeed = 400;
         if (walkingOnIce)
-        {
             walkingSpeed *= 1.5f;
-        }
         if (!isAlive)
-        {
             return;
-        }
         if (inputHelper.IsKeyDown(Keys.Left))
         {
             velocity.X = -walkingSpeed;
+            left = true;
         }
         else if (inputHelper.IsKeyDown(Keys.Right))
         {
             velocity.X = walkingSpeed;
+            left = false;
         }
         else if (!walkingOnIce && isOnTheGround)
-        {
             velocity.X = 0.0f;
-        }
         if (velocity.X != 0.0f)
-        {
             Mirror = velocity.X < 0;
-        }
-        if ((inputHelper.KeyPressed(Keys.Space) || inputHelper.KeyPressed(Keys.Up)) && isOnTheGround)
-        {
+        if (inputHelper.KeyPressed(Keys.Up) && isOnTheGround)
             Jump();
+        //shoot
+        if (inputHelper.KeyPressed(Keys.Space))
+            Shoot();
+    }
+    //zet dereferentie naar alle bullets
+    public void SetBullets(GameObjectList b)
+    {
+        blist = b;
+    }
+    //haal alle bullets op
+    public GameObjectList Bullets { get { return blist; } }
+    //verwijder bullets als ze te oud zijn
+    public void HandleBullets()
+    {
+        for(int i = 0; i < blist.Children.Count; i++)
+        {
+            if ((blist.Children[i] as Bullet).FramesAlive > 600)
+                blist.Remove(blist.Children[i]);
+        }
+    }
+    //maak de bullets en stop ze in de lijst
+    public void Shoot()
+    {
+        if(timer == null)
+            timer = GameWorld.Find("timer") as TimerGameObject;
+        timer.DecreaseSeconds(1);
+        for (int i = 0; i < 16; i++)
+        {
+            Bullet b = new Bullet();
+            b.Spawn(left, position - (Vector2.UnitY * Height / 2), r);
+            blist.Add(b);
         }
     }
 
     public override void Update(GameTime gameTime)
     {
         base.Update(gameTime);
+        //volg speler
+        Camera.FollowPlayer(position);
+        HandleBullets();
+        //laat de lucht nooit uit het scherm gaan
+        if(sky == null)
+            sky = GameWorld.Find("sky") as SpriteGameObject;
+        sky.Position = Camera.TopLeft - new Vector2(100, 100);
         if (!finished && isAlive)
         {
             if (isOnTheGround)
@@ -94,7 +134,8 @@ partial class Player : AnimatedGameObject
                 PlayAnimation("jump");
             }
 
-            TimerGameObject timer = GameWorld.Find("timer") as TimerGameObject;
+            if(timer == null)
+                timer = GameWorld.Find("timer") as TimerGameObject;
             if (walkingOnHot)
             {
                 timer.Multiplier = 2;
@@ -116,7 +157,6 @@ partial class Player : AnimatedGameObject
         }
 
         DoPhysics();
-        Camera.FollowPlayer(position);
     }
 
     public void Explode()

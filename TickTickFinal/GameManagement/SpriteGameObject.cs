@@ -24,7 +24,9 @@ public class SpriteGameObject : GameObject
     {
         if (!visible || sprite == null) return;
         Vector2 finalpos = this.GlobalPosition;
+        //teken UI objecten met respect tot het scherm en niet met respect tot het level
         if (UI) finalpos += Camera.TopLeft;
+        //als dit object deel uitmaakt van het paralax effect, verschuif dan aan de hand van de layer.
         Vector2 displace = Vector2.Zero;
         if (paralax)
         {

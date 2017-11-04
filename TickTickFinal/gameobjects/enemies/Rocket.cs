@@ -1,9 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 class Rocket : AnimatedGameObject
 {
     protected double spawnTime;
     protected Vector2 startPosition;
+    protected Player player = null;
 
     public Rocket(bool moveToLeft, Vector2 startPosition)
     {
@@ -33,29 +35,34 @@ class Rocket : AnimatedGameObject
         visible = true;
         velocity.X = 600;
         if (Mirror)
-        {
             this.velocity.X *= -1;
-        }
         CheckPlayerCollision();
-        // check if we are outside the screen
-        Rectangle screenBox = new Rectangle(0, 0, GameEnvironment.Screen.X, GameEnvironment.Screen.Y);
+        //kijk of de rocket buiten het level zit
+        Rectangle screenBox = new Rectangle(0, 0, (int)Camera.WorldSize.X, (int)Camera.WorldSize.Y);
         if (!screenBox.Intersects(this.BoundingBox))
-        {
             Reset();
-        }
     }
-
+    
     public void CheckPlayerCollision()
     {
-        Player player = GameWorld.Find("player") as Player;
+        if(player == null)
+            player = GameWorld.Find("player") as Player;
         if (CollidesWith(player) && visible)
         {
             if(player.Velocity.Y > 0 && player.IsAlive)
             {
                 Reset();
-                player.Jump(750);
+                player.Jump(1000);
             }
             else player.Die(false);
         }
+        //check collision met alle bullets
+        List<GameObject> bullets = player.Bullets.Children;
+        for(int i = 0; i < bullets.Count; i++)
+            if (CollidesWith(bullets[i] as SpriteGameObject))
+            {
+                Reset();
+                (bullets[i] as Bullet).Reset();
+            }
     }
 }

@@ -102,6 +102,7 @@ public class GameEnvironment : Game
                                         (float)GraphicsDevice.Viewport.Height / screen.Y);
         inputHelper.Offset = new Vector2(viewport.X, viewport.Y);
         spriteScale = Matrix.CreateScale(inputHelper.Scale.X, inputHelper.Scale.Y, 1);
+        //Laat camera de scale weten
         Camera.SetScale(inputHelper.Scale);
     }
 
@@ -129,12 +130,14 @@ public class GameEnvironment : Game
     {
         HandleInput();
         gameStateManager.Update(gameTime);
+        //bereken de eind transformatie
         finalMatrix = Matrix.Multiply(spriteScale, Camera.TranslationMatrix);
     }
 
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.Black);
+        //gebruik finalMatrix op alles
         spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, finalMatrix);
         gameStateManager.Draw(gameTime, spriteBatch);
         spriteBatch.End();

@@ -38,6 +38,11 @@ class TimerGameObject : TextGameObject
         }
     }
 
+    public void DecreaseSeconds(uint seconds)
+    {
+        timeLeft -= TimeSpan.FromSeconds(seconds);
+    }
+
     public override void Reset()
     {
         base.Reset();
